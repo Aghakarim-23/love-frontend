@@ -1,47 +1,90 @@
-
-import React from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import api from "../api/axiosInstance";
 
-const notes = [
-  {
-    id: 1,
-    text: "Səninlə keçirdiyim ən adi gün belə mənim üçün çox özəldir. ♡",
-    author: "Ondan",
-    date: "14 Fevral 2025",
-  },
-  {
-    id: 2,
-    text: "Bu gün səni düşündüm və öz-özümə gülümsədim.",
-    author: "Səndən",
-    date: "20 Fevral 2025",
-  },
-  {
-    id: 3,
-    text: "Həyatımda olduğun üçün çox xoşbəxtəm. Yaxşı ki, varsan!",
-    author: "Ondan",
-    date: "5 Mart 2025",
-  },
-  {
-    id: 4,
-    text: "Bəzən sadəcə səsini eşitmək bütün yorğunluğumu unutdurur.",
-    author: "Səndən",
-    date: "18 Mart 2025",
-  },
-  {
-    id: 5,
-    text: "Gələcəkdə birlikdə yaşayacağımız bütün gözəl günləri səbirsizliklə gözləyirəm.",
-    author: "Ondan",
-    date: "10 Aprel 2025",
-  },
-  {
-    id: 6,
-    text: "Mənim ən sevdiyim hekayə bizim hekayəmizdir. ♡",
-    author: "Səndən",
-    date: "25 Aprel 2025",
-  },
+const MAX_LENGTH = 500;
+
+const MONTHS = [
+  "Yanvar",
+  "Fevral",
+  "Mart",
+  "Aprel",
+  "May",
+  "İyun",
+  "İyul",
+  "Avqust",
+  "Sentyabr",
+  "Oktyabr",
+  "Noyabr",
+  "Dekabr",
 ];
 
+// "2025-02-14T..." → "14 Fevral 2025"
+const formatDate = (value) => {
+  const date = new Date(value);
+  return `${date.getDate()} ${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
+};
+
 const Notes = () => {
+  const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState("");
+
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [text, setText] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+
+  // Səhifə açılanda qeydləri serverdən alırıq
+  useEffect(() => {
+    const getNotes = async () => {
+      try {
+        const { data } = await api.get("/notes");
+        setNotes(data.notes);
+      } catch (error) {
+        console.error(error);
+        setLoadError("Qeydləri yükləmək mümkün olmadı. Bir az sonra yenidən cəhd edin");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getNotes();
+  }, []);
+
+  const closeForm = () => {
+    setIsFormOpen(false);
+    setText("");
+    setFormError("");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const trimmed = text.trim();
+
+    if (!trimmed) {
+      setFormError("Qeyd boş ola bilməz");
+      return;
+    }
+
+    setFormError("");
+    setSubmitting(true);
+
+    try {
+      const { data } = await api.post("/notes", { text: trimmed });
+
+      // Yeni qeydi siyahının əvvəlinə əlavə edirik
+      setNotes((prev) => [data.note, ...prev]);
+      closeForm();
+    } catch (error) {
+      console.error(error);
+      setFormError("Qeyd yadda saxlanmadı. Yenidən cəhd edin");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#FFF8F6] text-[#633A44]">
       {/* Navbar */}
@@ -88,7 +131,7 @@ const Notes = () => {
           </div>
 
           <p className="mt-3 font-serif text-4xl text-[#873E50]">
-            {notes.length}
+            {loading ? "…" : notes.length}
           </p>
 
           <p className="mt-2 text-sm text-[#94767C]">
@@ -108,54 +151,134 @@ const Notes = () => {
             </p>
           </div>
 
-          <button
-            type="button"
-            disabled
-            title="Tezliklə aktiv olacaq"
-            className="cursor-not-allowed rounded-2xl bg-[#98495B] px-6 py-3 text-sm font-medium text-white opacity-65"
-          >
-            + Yeni qeyd əlavə et
-          </button>
+          {!isFormOpen && (
+            <button
+              type="button"
+              onClick={() => setIsFormOpen(true)}
+              className="rounded-2xl bg-[#98495B] px-6 py-3 text-sm font-medium text-white shadow-lg shadow-rose-200/60 transition duration-300 hover:-translate-y-0.5 hover:bg-[#81394B] active:translate-y-0"
+            >
+              + Yeni qeyd əlavə et
+            </button>
+          )}
         </section>
+
+        {/* New note form */}
+        {isFormOpen && (
+          <form
+            onSubmit={handleSubmit}
+            className="relative mb-10 overflow-hidden rounded-3xl border border-[#EAD1D3]/60 bg-white p-7 shadow-sm"
+          >
+            <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#FCE7EB]/70 blur-3xl" />
+
+            <div className="relative z-10">
+              <label
+                htmlFor="note-text"
+                className="mb-3 block font-serif text-xl text-[#873E50]"
+              >
+                Bu gün nə demək istəyirsən? ♡
+              </label>
+
+              <textarea
+                id="note-text"
+                rows={4}
+                autoFocus
+                maxLength={MAX_LENGTH}
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                onKeyDown={(e) => e.key === "Escape" && closeForm()}
+                placeholder="Bir neçə gözəl söz yaz..."
+                className="w-full resize-none rounded-2xl border border-[#EAD1D3] bg-[#FFF8F6]/60 px-5 py-4 font-serif text-lg leading-8 text-[#633A44] outline-none transition placeholder:text-[#C5A7AD] focus:border-[#A44F62] focus:ring-2 focus:ring-rose-100"
+              />
+
+              <div className="mt-2 text-right text-xs text-[#B78D94]">
+                {text.length}/{MAX_LENGTH}
+              </div>
+
+              {formError && (
+                <p className="mt-3 rounded-2xl border border-rose-200 bg-rose-50 px-5 py-3 text-sm text-[#A44F62]">
+                  {formError}
+                </p>
+              )}
+
+              <div className="mt-5 flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
+                <button
+                  type="button"
+                  onClick={closeForm}
+                  disabled={submitting}
+                  className="rounded-2xl border border-[#EAD1D3] px-6 py-3 text-sm text-[#98495B] transition hover:bg-[#FFF0F2] disabled:opacity-65"
+                >
+                  Ləğv et
+                </button>
+
+                <button
+                  type="submit"
+                  disabled={submitting || !text.trim()}
+                  className="rounded-2xl bg-[#98495B] px-6 py-3 text-sm font-medium text-white shadow-lg shadow-rose-200/60 transition hover:bg-[#81394B] disabled:cursor-not-allowed disabled:opacity-65"
+                >
+                  {submitting ? "Yadda saxlanılır..." : "Qeydi saxla ♡"}
+                </button>
+              </div>
+            </div>
+          </form>
+        )}
 
         {/* Notes cards */}
-        <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {notes.map((note) => (
-            <article
-              key={note.id}
-              className="group relative flex min-h-64 flex-col justify-between overflow-hidden rounded-3xl border border-[#EAD1D3]/60 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-100/70"
-            >
-              {/* Decoration */}
-              <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#FCE7EB]/70 blur-3xl" />
+        {loading ? (
+          <p className="py-16 text-center text-4xl text-[#D986A0]">
+            <span className="animate-pulse">♡</span>
+          </p>
+        ) : loadError ? (
+          <p className="rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-center text-sm text-[#A44F62]">
+            {loadError}
+          </p>
+        ) : notes.length === 0 ? (
+          <div className="rounded-3xl border border-dashed border-[#EAD1D3] bg-white/60 px-7 py-14 text-center">
+            <p className="font-serif text-xl text-[#873E50]">
+              Hələ heç bir qeyd yoxdur
+            </p>
+            <p className="mt-2 text-sm text-[#94767C]">
+              İlk kiçik qeydi sən yaz ♡
+            </p>
+          </div>
+        ) : (
+          <section className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {notes.map((note) => (
+              <article
+                key={note.id}
+                className="group relative flex min-h-64 flex-col justify-between overflow-hidden rounded-3xl border border-[#EAD1D3]/60 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-100/70"
+              >
+                {/* Decoration */}
+                <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#FCE7EB]/70 blur-3xl" />
 
-              <div className="relative z-10">
-                <div className="mb-7 flex items-center justify-between">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FFF0F2] text-2xl text-[#98495B]">
-                    ♡
+                <div className="relative z-10">
+                  <div className="mb-7 flex items-center justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FFF0F2] text-2xl text-[#98495B]">
+                      ♡
+                    </div>
+
+                    <span className="text-xs text-[#B78D94]">
+                      {formatDate(note.createdAt)}
+                    </span>
                   </div>
 
-                  <span className="text-xs text-[#B78D94]">
-                    {note.date}
-                  </span>
+                  <p className="whitespace-pre-line break-words font-serif text-xl leading-9 text-[#873E50]">
+                    “{note.text}”
+                  </p>
                 </div>
 
-                <p className="font-serif text-xl leading-9 text-[#873E50]">
-                  “{note.text}”
-                </p>
-              </div>
+                <div className="relative z-10 mt-8 flex items-center justify-between border-t border-[#F3E4E6] pt-4">
+                  <span className="text-sm text-[#94767C]">
+                    {note.author?.name ?? "Naməlum"}
+                  </span>
 
-              <div className="relative z-10 mt-8 flex items-center justify-between border-t border-[#F3E4E6] pt-4">
-                <span className="text-sm text-[#94767C]">
-                  {note.author}
-                </span>
-
-                <span className="text-lg text-[#D986A0]">
-                  ♡
-                </span>
-              </div>
-            </article>
-          ))}
-        </section>
+                  <span className="text-lg text-[#D986A0]">
+                    ♡
+                  </span>
+                </div>
+              </article>
+            ))}
+          </section>
+        )}
 
         {/* Bottom quote */}
         <section className="mt-20 text-center">
