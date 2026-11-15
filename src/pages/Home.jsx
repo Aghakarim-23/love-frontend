@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
+  const navigate = useNavigate();
 
   const firstName = user?.name?.trim().split(" ")[0];
+
+  // Token silinir və istifadəçi login səhifəsinə yönləndirilir
+  const handleLogout = () => {
+    logout();
+    navigate("/login", { replace: true });
+  };
 
   if (loading) {
     return (
@@ -25,7 +33,7 @@ const Home = () => {
             ♡ Our Little World
           </a>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             <span className="hidden text-sm text-[#94767c] sm:block">
               Bizim kiçik dünyamız
             </span>
@@ -33,6 +41,14 @@ const Home = () => {
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f7dce1] font-medium text-[#98495b]">
               {firstName?.charAt(0).toUpperCase() || "♡"}
             </div>
+
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="rounded-full border border-[#ead1d3] px-4 py-2 text-sm text-[#98495b] transition hover:bg-[#fff0f2] active:scale-95"
+            >
+              Çıxış
+            </button>
           </div>
         </nav>
       </header>
