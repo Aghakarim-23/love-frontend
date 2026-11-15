@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -6,19 +8,36 @@ const Login = () => {
     password: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
+    setForm((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setSubmitting(true);
 
-    // Burada backend login API-ni qoşacağıq.
-    console.log("Login submitted");
+    try {
+      await login(form.email, form.password);
+      navigate("/");
+    } catch (error) {
+      if (error.response?.status === 401) {
+        setError("E-poçt və ya şifrə yanlışdır");
+      } else {
+        setError("Xəta baş verdi. Bir az sonra yenidən cəhd edin");
+      }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -158,7 +177,7 @@ const Login = () => {
 
                 <button
                   type="button"
-                  onClick={() => setShowPassword(!showPassword)}
+                  onClick={() => setShowPassword((prev) => !prev)}
                   className="absolute right-5 top-1/2 -translate-y-1/2 text-sm text-[#a44f62]"
                 >
                   {showPassword ? "Gizlət" : "Göstər"}
@@ -166,11 +185,18 @@ const Login = () => {
               </div>
             </div>
 
+            {error && (
+              <p className="rounded-2xl border border-rose-200 bg-rose-50 px-5 py-3 text-sm text-[#a44f62]">
+                {error}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="mt-4 w-full rounded-2xl bg-[#98495b] px-6 py-4 font-medium text-white shadow-lg shadow-rose-200/60 transition duration-300 hover:-translate-y-0.5 hover:bg-[#81394b] active:translate-y-0"
+              disabled={submitting}
+              className="mt-4 w-full rounded-2xl bg-[#98495b] px-6 py-4 font-medium text-white shadow-lg shadow-rose-200/60 transition duration-300 hover:-translate-y-0.5 hover:bg-[#81394b] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-65 disabled:hover:translate-y-0"
             >
-              Dünyamıza daxil ol ♡
+              {submitting ? "Daxil olunur..." : "Dünyamıza daxil ol ♡"}
             </button>
           </form>
 

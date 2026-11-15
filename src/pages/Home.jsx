@@ -1,43 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const getCurrentUser = async () => {
-      try {
-        const token = localStorage.getItem("token");
-
-        if (!token) {
-          setLoading(false);
-          return;
-        }
-
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users/me`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-
-        if (!response.ok) {
-          throw new Error("İstifadəçi məlumatları alınmadı");
-        }
-
-        const data = await response.json();
-        setUser(data.user ?? data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getCurrentUser();
-  }, []);
+  const { user, loading } = useAuth();
 
   const firstName = user?.name?.trim().split(" ")[0];
 
