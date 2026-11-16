@@ -128,21 +128,21 @@ const Home = () => {
 
           <div className="grid gap-5 md:grid-cols-3">
             {[
-              // {
-              //   icon: "♡",
-              //   title: "Xatirələrimiz",
-              //   description:
-              //     "Birlikdə yaşadığımız ən gözəl anları burada saxlayırıq.",
-              //   link: "/memories",
-              //   button: "Xatirələrə bax",
-              // },
-              // {
-              //   icon: "✉",
-              //   title: "Ürək sözlərimiz",
-              //   description: "Bəzən bir neçə söz minlərlə hissi ifadə edir.",
-              //   link: "/letters",
-              //   button: "Məktublara bax",
-              // },
+              {
+                icon: "♡",
+                title: "Xatirələrimiz",
+                description:
+                  "Birlikdə yaşadığımız ən gözəl anları burada saxlayırıq.",
+                link: "/memories",
+                button: "Xatirələrə bax",
+              },
+              {
+                icon: "✉",
+                title: "Ürək sözlərimiz",
+                description: "Bəzən bir neçə söz minlərlə hissi ifadə edir.",
+                link: "/letters",
+                button: "Məktublara bax",
+              },
               {
                 icon: "✧",
                 title: "Kiçik qeydlərimiz",
