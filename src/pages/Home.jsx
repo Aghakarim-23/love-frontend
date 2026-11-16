@@ -136,13 +136,13 @@ const Home = () => {
               //   link: "/memories",
               //   button: "Xatirələrə bax",
               // },
-              // {
-              //   icon: "✉",
-              //   title: "Ürək sözlərimiz",
-              //   description: "Bəzən bir neçə söz minlərlə hissi ifadə edir.",
-              //   link: "/letters",
-              //   button: "Məktublara bax",
-              // },
+              {
+                icon: "✉",
+                title: "Ürək sözlərimiz",
+                description: "Bəzən bir neçə söz minlərlə hissi ifadə edir.",
+                link: "/letters",
+                button: "Məktublara bax",
+              },
               {
                 icon: "✧",
                 title: "Kiçik qeydlərimiz",
