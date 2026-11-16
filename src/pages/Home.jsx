@@ -128,14 +128,14 @@ const Home = () => {
 
           <div className="grid gap-5 md:grid-cols-3">
             {[
-              // {
-              //   icon: "♡",
-              //   title: "Xatirələrimiz",
-              //   description:
-              //     "Birlikdə yaşadığımız ən gözəl anları burada saxlayırıq.",
-              //   link: "/memories",
-              //   button: "Xatirələrə bax",
-              // },
+              {
+                icon: "♡",
+                title: "Xatirələrimiz",
+                description:
+                  "Birlikdə yaşadığımız ən gözəl anları burada saxlayırıq.",
+                link: "/memories",
+                button: "Xatirələrə bax",
+              },
               {
                 icon: "✉",
                 title: "Ürək sözlərimiz",
