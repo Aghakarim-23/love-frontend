@@ -7,7 +7,7 @@ const PublicRoute = () => {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#fff8f6] text-4xl text-[#a44f62]">
+      <div className="flex min-h-screen items-center justify-center bg-[#FFFFFF] text-4xl text-[#000000]">
         <span className="animate-pulse">♡</span>
       </div>
     );

@@ -41,13 +41,9 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#fff8f6] lg:grid lg:grid-cols-2">
-      {/* Romantik gradient bölməsi */}
-      <div className="relative hidden overflow-hidden bg-gradient-to-br from-[#f7b7c3] via-[#d986a0] to-[#87465e] lg:flex lg:items-center lg:justify-center">
-        {/* Yumşaq işıq effektləri */}
-        <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-white/25 blur-3xl" />
-        <div className="absolute -bottom-32 -right-24 h-96 w-96 rounded-full bg-[#632a49]/30 blur-3xl" />
-
+    <div className="min-h-screen bg-[#FFFFFF] lg:grid lg:grid-cols-2">
+      {/* Romantik bölmə */}
+      <div className="relative hidden overflow-hidden bg-black lg:flex lg:items-center lg:justify-center">
         {/* Kiçik dekorativ ürəklər */}
         {[
           { top: "8%", left: "12%", size: 20, delay: "0s" },
@@ -63,7 +59,7 @@ const Login = () => {
         ].map((heart, index) => (
           <span
             key={index}
-            className="pointer-events-none absolute animate-pulse text-white/35"
+            className="pointer-events-none absolute animate-pulse text-[#555555]"
             style={{
               top: heart.top,
               left: heart.left,
@@ -77,7 +73,7 @@ const Login = () => {
         ))}
 
         {/* Mərkəzdə böyük dekorativ ürək */}
-        <div className="absolute text-[320px] leading-none text-white/10 select-none">
+        <div className="absolute text-[320px] leading-none text-[#222222] select-none">
           ♡
         </div>
 
@@ -89,22 +85,22 @@ const Login = () => {
             Bizim Hekayəmiz
           </h2>
 
-          <p className="mt-6 font-serif text-2xl italic text-white/95">
+          <p className="mt-6 font-serif text-2xl italic text-white">
             Hər şey səninlə daha gözəldir...
           </p>
 
           <div className="mx-auto my-10 flex items-center justify-center gap-4">
-            <span className="h-px w-16 bg-white/50" />
+            <span className="h-px w-16 bg-white" />
             <span className="text-2xl">♥</span>
-            <span className="h-px w-16 bg-white/50" />
+            <span className="h-px w-16 bg-white" />
           </div>
 
-          <p className="mx-auto max-w-sm text-base leading-8 text-white/85">
+          <p className="mx-auto max-w-sm text-base leading-8 text-white">
             Birlikdə yazdığımız hər xatirə, paylaşdığımız hər an və bizi biz
             edən bütün gözəl hisslər burada yaşayacaq.
           </p>
 
-          <p className="mt-12 text-sm tracking-[0.25em] text-white/75">
+          <p className="mt-12 text-sm tracking-[0.25em] text-white">
             SƏN ♡ MƏN ♡ BİZ
           </p>
         </div>
@@ -112,22 +108,19 @@ const Login = () => {
 
       {/* Giriş bölməsi */}
       <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 py-12">
-        <div className="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-rose-100/60 blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-pink-100/70 blur-3xl" />
-
         <div className="relative z-10 w-full max-w-md">
           <div className="mb-10 text-center">
-            <div className="mb-5 text-6xl text-[#a44f62]">♡</div>
+            <div className="mb-5 text-6xl text-[#000000]">♡</div>
 
-            <h1 className="font-serif text-4xl tracking-tight text-[#873e50] sm:text-5xl">
+            <h1 className="font-serif text-4xl tracking-tight text-[#000000] sm:text-5xl">
               Bizim Kiçik Dünyamız
             </h1>
 
-            <p className="mt-4 text-sm tracking-[0.3em]  text-[#b78d94]">
+            <p className="mt-4 text-sm tracking-[0.3em]  text-[#666666]">
               SADƏCƏ İKİMİZ, ƏBƏDİ
             </p>
 
-            <p className="mt-6 text-[#94767c]">
+            <p className="mt-6 text-[#444444]">
               Gözəl xatirələrimiz üçün kiçik bir dünya.
             </p>
           </div>
@@ -136,7 +129,7 @@ const Login = () => {
             <div>
               <label
                 htmlFor="email"
-                className="mb-2 block text-sm font-medium text-[#754a53]"
+                className="mb-2 block text-sm font-medium text-[#000000]"
               >
                 E-poçt ünvanı
               </label>
@@ -150,14 +143,14 @@ const Login = () => {
                 placeholder="E-poçt ünvanınızı daxil edin"
                 value={form.email}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#ead1d3] bg-white/75 px-5 py-4 text-[#633a44] outline-none transition placeholder:text-[#c5a7ad] focus:border-[#a44f62] focus:ring-2 focus:ring-rose-100"
+                className="w-full rounded-2xl border border-[#D4D4D4] bg-white px-5 py-4 text-[#000000] outline-none transition placeholder:text-[#999999] focus:border-[#000000] focus:ring-2 focus:ring-[#E5E5E5]"
               />
             </div>
 
             <div>
               <label
                 htmlFor="password"
-                className="mb-2 block text-sm font-medium text-[#754a53]"
+                className="mb-2 block text-sm font-medium text-[#000000]"
               >
                 Şifrə
               </label>
@@ -172,13 +165,13 @@ const Login = () => {
                   placeholder="Şifrənizi daxil edin"
                   value={form.password}
                   onChange={handleChange}
-                  className="w-full rounded-2xl border border-[#ead1d3] bg-white/75 px-5 py-4 pr-20 text-[#633a44] outline-none transition placeholder:text-[#c5a7ad] focus:border-[#a44f62] focus:ring-2 focus:ring-rose-100"
+                  className="w-full rounded-2xl border border-[#D4D4D4] bg-white px-5 py-4 pr-20 text-[#000000] outline-none transition placeholder:text-[#999999] focus:border-[#000000] focus:ring-2 focus:ring-[#E5E5E5]"
                 />
 
                 <button
                   type="button"
                   onClick={() => setShowPassword((prev) => !prev)}
-                  className="absolute right-5 top-1/2 -translate-y-1/2 text-sm text-[#a44f62]"
+                  className="absolute right-5 top-1/2 -translate-y-1/2 text-sm text-[#000000]"
                 >
                   {showPassword ? "Gizlət" : "Göstər"}
                 </button>
@@ -186,7 +179,7 @@ const Login = () => {
             </div>
 
             {error && (
-              <p className="rounded-2xl border border-rose-200 bg-rose-50 px-5 py-3 text-sm text-[#a44f62]">
+              <p className="rounded-2xl border border-black bg-[#F5F5F5] px-5 py-3 text-sm text-[#000000]">
                 {error}
               </p>
             )}
@@ -194,24 +187,24 @@ const Login = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="mt-4 w-full rounded-2xl bg-[#98495b] px-6 py-4 font-medium text-white shadow-lg shadow-rose-200/60 transition duration-300 hover:-translate-y-0.5 hover:bg-[#81394b] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-65 disabled:hover:translate-y-0"
+              className="mt-4 w-full rounded-2xl bg-[#000000] px-6 py-4 font-medium text-white shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-[#333333] active:translate-y-0 disabled:cursor-not-allowed disabled:opacity-65 disabled:hover:translate-y-0"
             >
               {submitting ? "Daxil olunur..." : "Dünyamıza daxil ol ♡"}
             </button>
           </form>
 
           <div className="mt-10 text-center">
-            <p className="font-serif text-lg italic text-[#a97883]">
+            <p className="font-serif text-lg italic text-[#444444]">
               "Sən, mən və bütün xatirələrimiz."
             </p>
 
-            <div className="mt-8 flex items-center justify-center gap-3 text-[#c79ba4]">
-              <span className="h-px w-12 bg-[#e7cbd0]" />
+            <div className="mt-8 flex items-center justify-center gap-3 text-[#666666]">
+              <span className="h-px w-12 bg-[#D4D4D4]" />
               <span>♡</span>
-              <span className="h-px w-12 bg-[#e7cbd0]" />
+              <span className="h-px w-12 bg-[#D4D4D4]" />
             </div>
 
-            <p className="mt-6 text-xs text-[#b79ba0]">
+            <p className="mt-6 text-xs text-[#666666]">
               Sevgi ilə, sadəcə ikimiz üçün hazırlanıb.
             </p>
           </div>
