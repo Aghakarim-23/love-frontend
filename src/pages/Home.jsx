@@ -15,37 +15,37 @@ const Home = () => {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#fff8f6]">
-        <div className="animate-pulse text-4xl text-[#98495b]">♡</div>
+      <div className="flex min-h-screen items-center justify-center bg-[#FFFFFF]">
+        <div className="animate-pulse text-4xl text-[#000000]">♡</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#fff8f6] text-[#633a44]">
+    <div className="min-h-screen bg-[#FFFFFF] text-[#000000]">
       {/* Navbar */}
-      <header className="border-b border-[#ead1d3]/60 bg-white/60">
+      <header className="border-b border-[#D4D4D4] bg-white">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <a
             href="/"
-            className="font-serif text-xl font-semibold text-[#873e50]"
+            className="font-serif text-xl font-semibold text-[#000000]"
           >
             ♡ Our Little World
           </a>
 
           <div className="flex items-center gap-3 sm:gap-6">
-            <span className="hidden text-sm text-[#94767c] sm:block">
+            <span className="hidden text-sm text-[#444444] sm:block">
               Bizim kiçik dünyamız
             </span>
 
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f7dce1] font-medium text-[#98495b]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F5F5F5] font-medium text-[#000000]">
               {firstName?.charAt(0).toUpperCase() || "♡"}
             </div>
 
             <button
               type="button"
               onClick={handleLogout}
-              className="rounded-full border border-[#ead1d3] px-4 py-2 text-sm text-[#98495b] transition hover:bg-[#fff0f2] active:scale-95"
+              className="rounded-full border border-[#D4D4D4] px-4 py-2 text-sm text-[#000000] transition hover:bg-[#F5F5F5] active:scale-95"
             >
               Çıxış
             </button>
@@ -56,35 +56,32 @@ const Home = () => {
       <main className="mx-auto max-w-6xl px-6 pb-20">
         {/* Welcome */}
         <section className="pb-10 pt-14">
-          <p className="mb-3 text-sm tracking-widest text-[#b78d94]">
+          <p className="mb-3 text-sm tracking-widest text-[#666666]">
             XOŞ GƏLDİN ♡
           </p>
 
-          <h1 className="font-serif text-4xl text-[#873e50] sm:text-5xl">
+          <h1 className="font-serif text-4xl text-[#000000] sm:text-5xl">
             Salam, {firstName || "əzizim"}!
-            <span className="ml-3 text-[#d986a0]">♡</span>
+            <span className="ml-3 text-[#000000]">♡</span>
           </h1>
 
-          <p className="mt-4 text-[#94767c]">
+          <p className="mt-4 text-[#444444]">
             Bu gün də hekayəmizə yeni bir xatirə əlavə edək.
           </p>
         </section>
 
         {/* Hero */}
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#f7b7c3] via-[#d986a0] to-[#87465e] px-8 py-16 text-center text-white sm:py-20">
-          <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/20 blur-3xl" />
-          <div className="absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-[#632a49]/30 blur-3xl" />
-
-          <span className="absolute left-[10%] top-[18%] text-xl text-white/40">
+        <section className="relative overflow-hidden rounded-3xl bg-black px-8 py-16 text-center text-white sm:py-20">
+          <span className="absolute left-[10%] top-[18%] text-xl text-[#555555]">
             ♡
           </span>
-          <span className="absolute right-[12%] top-[25%] text-3xl text-white/40">
+          <span className="absolute right-[12%] top-[25%] text-3xl text-[#555555]">
             ♡
           </span>
-          <span className="absolute bottom-[15%] left-[22%] text-2xl text-white/30">
+          <span className="absolute bottom-[15%] left-[22%] text-2xl text-[#555555]">
             ♡
           </span>
-          <span className="absolute bottom-[20%] right-[20%] text-lg text-white/30">
+          <span className="absolute bottom-[20%] right-[20%] text-lg text-[#555555]">
             ♡
           </span>
 
@@ -93,18 +90,18 @@ const Home = () => {
 
             <h2 className="font-serif text-4xl sm:text-5xl">Bizim Hekayəmiz</h2>
 
-            <p className="mx-auto mt-6 max-w-md text-base leading-8 text-white/90">
+            <p className="mx-auto mt-6 max-w-md text-base leading-8 text-white">
               Bəzi anlar unudulmazdır. Bəzi insanlar isə bütün anları unudulmaz
               edir.
             </p>
 
             <div className="mx-auto mt-8 flex items-center justify-center gap-4">
-              <span className="h-px w-12 bg-white/50" />
+              <span className="h-px w-12 bg-white" />
               <span>♥</span>
-              <span className="h-px w-12 bg-white/50" />
+              <span className="h-px w-12 bg-white" />
             </div>
 
-            <p className="mt-5 text-xs tracking-[0.3em] text-white/80">
+            <p className="mt-5 text-xs tracking-[0.3em] text-white">
               SƏN ♡ MƏN ♡ BİZ
             </p>
           </div>
@@ -113,15 +110,15 @@ const Home = () => {
         {/* Features */}
         <section className="mt-16">
           <div className="mb-8">
-            <p className="mb-2 text-xs tracking-[0.25em] text-[#b78d94]">
+            <p className="mb-2 text-xs tracking-[0.25em] text-[#666666]">
               BİZİM DÜNYAMIZ
             </p>
 
-            <h2 className="font-serif text-3xl text-[#873e50]">
+            <h2 className="font-serif text-3xl text-[#000000]">
               Birlikdə hər şey daha gözəldir
             </h2>
 
-            <p className="mt-3 text-sm text-[#94767c]">
+            <p className="mt-3 text-sm text-[#444444]">
               Xatirələrimiz, məktublarımız və kiçik qeydlərimiz.
             </p>
           </div>
@@ -154,23 +151,23 @@ const Home = () => {
             ].map((item) => (
               <article
                 key={item.title}
-                className="group flex flex-col rounded-2xl border border-[#ead1d3]/70 bg-white/75 p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-rose-100"
+                className="group flex flex-col rounded-2xl border border-[#D4D4D4] bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#fff0f2] text-2xl text-[#98495b]">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F5F5F5] text-2xl text-[#000000]">
                   {item.icon}
                 </div>
 
-                <h3 className="font-serif text-2xl text-[#873e50]">
+                <h3 className="font-serif text-2xl text-[#000000]">
                   {item.title}
                 </h3>
 
-                <p className="mt-3 flex-1 text-sm leading-7 text-[#94767c]">
+                <p className="mt-3 flex-1 text-sm leading-7 text-[#444444]">
                   {item.description}
                 </p>
 
                 <a
                   href={item.link}
-                  className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-[#98495b] transition group-hover:gap-3"
+                  className="mt-7 inline-flex items-center gap-2 text-sm font-medium text-[#000000] transition group-hover:gap-3"
                 >
                   {item.button}
                   <span>→</span>
@@ -182,21 +179,21 @@ const Home = () => {
 
         {/* Quote */}
         <section className="mt-20 text-center">
-          <div className="mb-5 text-3xl text-[#d986a0]">♡</div>
+          <div className="mb-5 text-3xl text-[#000000]">♡</div>
 
-          <p className="font-serif text-2xl italic leading-relaxed text-[#a97883] sm:text-3xl">
+          <p className="font-serif text-2xl italic leading-relaxed text-[#444444] sm:text-3xl">
             "Ən gözəl yer sənin olduğun yerdir."
           </p>
 
-          <p className="mt-5 text-xs tracking-[0.25em] text-[#b78d94]">
+          <p className="mt-5 text-xs tracking-[0.25em] text-[#666666]">
             HƏMİŞƏ BİRLİKDƏ
           </p>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#ead1d3]/60 py-7 text-center">
-        <p className="text-xs text-[#b79ba0]">
+      <footer className="border-t border-[#D4D4D4] py-7 text-center">
+        <p className="text-xs text-[#666666]">
           Sevgi ilə, sadəcə ikimiz üçün hazırlanıb. ♡
         </p>
       </footer>

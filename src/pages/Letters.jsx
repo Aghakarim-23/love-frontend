@@ -184,20 +184,20 @@ const Letters = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FFF8F6] text-[#633A44]">
+    <div className="min-h-screen bg-[#FFFFFF] text-[#000000]">
       {/* Navbar */}
-      <header className="border-b border-[#EAD1D3]/60 bg-white/70">
+      <header className="border-b border-[#D4D4D4] bg-white">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <Link
             to="/"
-            className="font-serif text-xl font-semibold text-[#873E50]"
+            className="font-serif text-xl font-semibold text-[#000000]"
           >
             ♡ Our Little World
           </Link>
 
           <Link
             to="/"
-            className="text-sm text-[#98495B] transition hover:text-[#873E50]"
+            className="text-sm text-[#444444] transition hover:text-[#000000]"
           >
             ← Ana səhifə
           </Link>
@@ -207,15 +207,15 @@ const Letters = () => {
       <main className="mx-auto max-w-6xl px-6 pb-20">
         {/* Page heading */}
         <section className="pb-10 pt-14 text-center">
-          <p className="mb-3 text-xs tracking-[0.3em] text-[#B78D94]">
+          <p className="mb-3 text-xs tracking-[0.3em] text-[#666666]">
             QƏLBDƏN GƏLƏN SÖZLƏR
           </p>
 
-          <h1 className="font-serif text-4xl text-[#873E50] sm:text-5xl">
+          <h1 className="font-serif text-4xl text-[#000000] sm:text-5xl">
             Ürək sözlərimiz ♡
           </h1>
 
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#94767C]">
+          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#444444]">
             Bəzən bir neçə cümlə minlərlə hissi ifadə edir.
             Burada bir-birimizə söylədiyimiz ən gözəl
             sözləri və məktubları saxlayırıq.
@@ -223,16 +223,16 @@ const Letters = () => {
         </section>
 
         {/* Letters count */}
-        <section className="mb-12 rounded-3xl border border-[#EAD1D3]/60 bg-white/75 px-7 py-8 text-center shadow-sm">
-          <div className="text-3xl text-[#D986A0]">
+        <section className="mb-12 rounded-3xl border border-[#D4D4D4] bg-white px-7 py-8 text-center shadow-sm">
+          <div className="text-3xl text-[#000000]">
             ✉
           </div>
 
-          <p className="mt-3 font-serif text-4xl text-[#873E50]">
+          <p className="mt-3 font-serif text-4xl text-[#000000]">
             {loading ? "…" : letters.length}
           </p>
 
-          <p className="mt-2 text-sm text-[#94767C]">
+          <p className="mt-2 text-sm text-[#444444]">
             Qəlbdən yazılmış məktublar
           </p>
         </section>
@@ -240,11 +240,11 @@ const Letters = () => {
         {/* Section heading */}
         <section className="mb-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <h2 className="font-serif text-2xl text-[#873E50]">
+            <h2 className="font-serif text-2xl text-[#000000]">
               Məktublarımız
             </h2>
 
-            <p className="mt-2 text-sm text-[#94767C]">
+            <p className="mt-2 text-sm text-[#444444]">
               Hər məktubda bir az sevgi, bir az da biz varıq.
             </p>
           </div>
@@ -253,7 +253,7 @@ const Letters = () => {
             <button
               type="button"
               onClick={() => setIsFormOpen(true)}
-              className="rounded-2xl bg-[#98495B] px-6 py-3 text-sm font-medium text-white shadow-lg shadow-rose-200/60 transition duration-300 hover:-translate-y-0.5 hover:bg-[#81394B] active:translate-y-0"
+              className="rounded-2xl bg-[#000000] px-6 py-3 text-sm font-medium text-white shadow-lg transition duration-300 hover:-translate-y-0.5 hover:bg-[#333333] active:translate-y-0"
             >
               + Yeni məktub yaz
             </button>
@@ -265,21 +265,20 @@ const Letters = () => {
           <form
             onSubmit={handleSubmit}
             onKeyDown={(e) => e.key === "Escape" && closeForm()}
-            className="relative mb-10 overflow-hidden rounded-3xl border border-[#EAD1D3]/60 bg-white p-7 shadow-sm"
+            className="relative mb-10 overflow-hidden rounded-3xl border border-[#D4D4D4] bg-white p-7 shadow-sm"
           >
-            <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-[#FCE7EB]/70 blur-3xl" />
 
             <div className="relative z-10">
               <div className="mb-6 flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FFF0F2] text-2xl text-[#98495B]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F5F5F5] text-2xl text-[#000000]">
                   ✉
                 </div>
 
                 <div>
-                  <h3 className="font-serif text-xl text-[#873E50]">
+                  <h3 className="font-serif text-xl text-[#000000]">
                     Yeni məktub
                   </h3>
-                  <p className="text-xs text-[#B78D94]">
+                  <p className="text-xs text-[#666666]">
                     Ürəyindən keçənləri yaz ♡
                   </p>
                 </div>
@@ -288,11 +287,11 @@ const Letters = () => {
               {/* From → To */}
               <div className="mb-5 grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-2 block text-xs tracking-wide text-[#B78D94]">
+                  <label className="mb-2 block text-xs tracking-wide text-[#666666]">
                     KİMDƏN
                   </label>
 
-                  <div className="rounded-2xl border border-[#EAD1D3] bg-[#FFF8F6]/60 px-5 py-3 text-sm text-[#633A44]">
+                  <div className="rounded-2xl border border-[#D4D4D4] bg-[#FFFFFF] px-5 py-3 text-sm text-[#000000]">
                     {user?.name ?? "Mən"}
                   </div>
                 </div>
@@ -300,7 +299,7 @@ const Letters = () => {
                 <div>
                   <label
                     htmlFor="letter-recipient"
-                    className="mb-2 block text-xs tracking-wide text-[#B78D94]"
+                    className="mb-2 block text-xs tracking-wide text-[#666666]"
                   >
                     KİMƏ
                   </label>
@@ -309,7 +308,7 @@ const Letters = () => {
                     id="letter-recipient"
                     value={recipientId}
                     onChange={(e) => setRecipientId(e.target.value)}
-                    className="w-full rounded-2xl border border-[#EAD1D3] bg-[#FFF8F6]/60 px-5 py-3 text-sm text-[#633A44] outline-none transition focus:border-[#A44F62] focus:ring-2 focus:ring-rose-100"
+                    className="w-full rounded-2xl border border-[#D4D4D4] bg-[#FFFFFF] px-5 py-3 text-sm text-[#000000] outline-none transition focus:border-[#000000] focus:ring-2 focus:ring-[#E5E5E5]"
                   >
                     <option value="" disabled>
                       Kimə yazırsan?
@@ -327,7 +326,7 @@ const Letters = () => {
               {/* Title */}
               <label
                 htmlFor="letter-title"
-                className="mb-2 block text-xs tracking-wide text-[#B78D94]"
+                className="mb-2 block text-xs tracking-wide text-[#666666]"
               >
                 BAŞLIQ
               </label>
@@ -340,13 +339,13 @@ const Letters = () => {
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 placeholder="Sənə demək istədiklərim..."
-                className="w-full rounded-2xl border border-[#EAD1D3] bg-[#FFF8F6]/60 px-5 py-3 font-serif text-lg text-[#633A44] outline-none transition placeholder:text-[#C5A7AD] focus:border-[#A44F62] focus:ring-2 focus:ring-rose-100"
+                className="w-full rounded-2xl border border-[#D4D4D4] bg-[#FFFFFF] px-5 py-3 font-serif text-lg text-[#000000] outline-none transition placeholder:text-[#999999] focus:border-[#000000] focus:ring-2 focus:ring-[#E5E5E5]"
               />
 
               {/* Message */}
               <label
                 htmlFor="letter-message"
-                className="mb-2 mt-5 block text-xs tracking-wide text-[#B78D94]"
+                className="mb-2 mt-5 block text-xs tracking-wide text-[#666666]"
               >
                 MƏKTUB
               </label>
@@ -358,15 +357,15 @@ const Letters = () => {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Bəzən hisslərimi sözlə ifadə etmək çətin olur..."
-                className="w-full resize-none rounded-2xl border border-[#EAD1D3] bg-[#FFF8F6]/60 px-5 py-4 font-serif text-lg leading-8 text-[#633A44] outline-none transition placeholder:text-[#C5A7AD] focus:border-[#A44F62] focus:ring-2 focus:ring-rose-100"
+                className="w-full resize-none rounded-2xl border border-[#D4D4D4] bg-[#FFFFFF] px-5 py-4 font-serif text-lg leading-8 text-[#000000] outline-none transition placeholder:text-[#999999] focus:border-[#000000] focus:ring-2 focus:ring-[#E5E5E5]"
               />
 
-              <div className="mt-2 text-right text-xs text-[#B78D94]">
+              <div className="mt-2 text-right text-xs text-[#666666]">
                 {message.length}/{MESSAGE_MAX_LENGTH}
               </div>
 
               {formError && (
-                <p className="mt-3 rounded-2xl border border-rose-200 bg-rose-50 px-5 py-3 text-sm text-[#A44F62]">
+                <p className="mt-3 rounded-2xl border border-black bg-[#F5F5F5] px-5 py-3 text-sm text-[#000000]">
                   {formError}
                 </p>
               )}
@@ -376,7 +375,7 @@ const Letters = () => {
                   type="button"
                   onClick={closeForm}
                   disabled={submitting}
-                  className="rounded-2xl border border-[#EAD1D3] px-6 py-3 text-sm text-[#98495B] transition hover:bg-[#FFF0F2] disabled:opacity-65"
+                  className="rounded-2xl border border-[#D4D4D4] px-6 py-3 text-sm text-[#000000] transition hover:bg-[#F5F5F5] disabled:opacity-65"
                 >
                   Ləğv et
                 </button>
@@ -386,7 +385,7 @@ const Letters = () => {
                   disabled={
                     submitting || !title.trim() || !message.trim() || !recipientId
                   }
-                  className="rounded-2xl bg-[#98495B] px-6 py-3 text-sm font-medium text-white shadow-lg shadow-rose-200/60 transition hover:bg-[#81394B] disabled:cursor-not-allowed disabled:opacity-65"
+                  className="rounded-2xl bg-[#000000] px-6 py-3 text-sm font-medium text-white shadow-lg transition hover:bg-[#333333] disabled:cursor-not-allowed disabled:opacity-65"
                 >
                   {submitting ? "Göndərilir..." : "Məktubu göndər ♡"}
                 </button>
@@ -397,19 +396,19 @@ const Letters = () => {
 
         {/* Letters grid */}
         {loading ? (
-          <p className="py-16 text-center text-4xl text-[#D986A0]">
+          <p className="py-16 text-center text-4xl text-[#000000]">
             <span className="animate-pulse">♡</span>
           </p>
         ) : loadError ? (
-          <p className="rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-center text-sm text-[#A44F62]">
+          <p className="rounded-2xl border border-black bg-[#F5F5F5] px-5 py-4 text-center text-sm text-[#000000]">
             {loadError}
           </p>
         ) : letters.length === 0 ? (
-          <div className="rounded-3xl border border-dashed border-[#EAD1D3] bg-white/60 px-7 py-14 text-center">
-            <p className="font-serif text-xl text-[#873E50]">
+          <div className="rounded-3xl border border-dashed border-[#D4D4D4] bg-white px-7 py-14 text-center">
+            <p className="font-serif text-xl text-[#000000]">
               Hələ heç bir məktub yoxdur
             </p>
-            <p className="mt-2 text-sm text-[#94767C]">
+            <p className="mt-2 text-sm text-[#444444]">
               İlk məktubu sən yaz ♡
             </p>
           </div>
@@ -418,46 +417,44 @@ const Letters = () => {
             {letters.map((letter, index) => (
               <article
                 key={letter.id}
-                className="group flex flex-col overflow-hidden rounded-3xl border border-[#EAD1D3]/60 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-100/70"
+                className="group flex flex-col overflow-hidden rounded-3xl border border-[#D4D4D4] bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 {/* Decorative header */}
-                <div className="relative flex h-44 items-center justify-center overflow-hidden bg-gradient-to-br from-[#FCE7EB] via-[#F7D4DC] to-[#E8B4C2]">
-                  <div className="absolute -left-10 -top-10 h-36 w-36 rounded-full bg-white/30 blur-2xl" />
-
-                  <span className="absolute left-7 top-6 text-xl text-[#98495B]/30">
+                <div className="relative flex h-44 items-center justify-center overflow-hidden bg-[#F5F5F5]">
+                  <span className="absolute left-7 top-6 text-xl text-[#CCCCCC]">
                     ♡
                   </span>
 
-                  <span className="absolute bottom-6 right-8 text-2xl text-[#98495B]/30">
+                  <span className="absolute bottom-6 right-8 text-2xl text-[#CCCCCC]">
                     ♡
                   </span>
 
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white/70 bg-white/50 text-5xl text-[#98495B] shadow-sm transition duration-300 group-hover:scale-110">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full border border-white bg-white text-5xl text-[#000000] shadow-sm transition duration-300 group-hover:scale-110">
                     {ICONS[index % ICONS.length]}
                   </div>
                 </div>
 
                 {/* Content */}
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="mb-3 text-xs tracking-wide text-[#B78D94]">
+                  <p className="mb-3 text-xs tracking-wide text-[#666666]">
                     {formatDate(letter.createdAt)}
                   </p>
 
-                  <h3 className="break-words font-serif text-2xl text-[#873E50]">
+                  <h3 className="break-words font-serif text-2xl text-[#000000]">
                     {letter.title}
                   </h3>
 
                   {/* From → To */}
-                  <p className="mt-4 inline-flex w-fit rounded-full bg-[#FFF0F2] px-3 py-1 text-xs text-[#A97883]">
+                  <p className="mt-4 inline-flex w-fit rounded-full bg-[#F5F5F5] px-3 py-1 text-xs text-[#444444]">
                     {getFromLabel(letter.from)} {getToLabel(letter.to)} ♡
                   </p>
 
-                  <p className="mt-5 flex-1 whitespace-pre-line break-words text-sm leading-7 text-[#94767C]">
+                  <p className="mt-5 flex-1 whitespace-pre-line break-words text-sm leading-7 text-[#444444]">
                     {letter.message}
                   </p>
 
-                  <div className="mt-6 border-t border-[#F3E4E6] pt-4">
-                    <span className="text-sm font-medium text-[#98495B]">
+                  <div className="mt-6 border-t border-[#E5E5E5] pt-4">
+                    <span className="text-sm font-medium text-[#000000]">
                       Sevgi ilə yazılıb ♡
                     </span>
                   </div>
@@ -469,23 +466,23 @@ const Letters = () => {
 
         {/* Bottom quote */}
         <section className="mt-20 text-center">
-          <div className="mb-5 text-3xl text-[#D986A0]">
+          <div className="mb-5 text-3xl text-[#000000]">
             ♡
           </div>
 
-          <p className="font-serif text-2xl italic leading-relaxed text-[#A97883] sm:text-3xl">
+          <p className="font-serif text-2xl italic leading-relaxed text-[#444444] sm:text-3xl">
             “Bəzi sözlər heç vaxt unudulmur.”
           </p>
 
-          <p className="mt-5 text-xs tracking-[0.25em] text-[#B78D94]">
+          <p className="mt-5 text-xs tracking-[0.25em] text-[#666666]">
             SƏN ♡ MƏN ♡ BİZ
           </p>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#EAD1D3]/60 py-7 text-center">
-        <p className="text-xs text-[#B79BA0]">
+      <footer className="border-t border-[#D4D4D4] py-7 text-center">
+        <p className="text-xs text-[#666666]">
           Sevgi ilə, sadəcə ikimiz üçün hazırlanıb. ♡
         </p>
       </footer>
